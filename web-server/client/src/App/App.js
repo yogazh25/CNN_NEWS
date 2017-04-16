@@ -1,19 +1,19 @@
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize.min.js';
 
-import React, { Component } from 'react';
+import React from 'react';
 import logo from '../../public/logo.png';
 import './App.css';
 
 import NewsPanel from '../NewsPanel/NewsPanel';
 
-class App extends Component {
+class App extends React.Component{
   render() {
-    return (
+    return(
       <div>
-        <img src={logo} className="logo" alt="logo" />
+        <img className='logo' src={logo} alt='logo'/>
         <div className='container'>
-
+           <NewsPanel />
         </div>
       </div>
     );
