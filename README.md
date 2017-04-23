@@ -6,4 +6,4 @@ updates a news preference model for each user (NLP). In this project, I designed
 model.
 ## Interface Showcase 
 #### main page
-![image1](https://raw.githubusercontent.com/yogazh25/CNN_NEWS/assets/main_page.png)
+![image1](https://raw.githubusercontent.com/yogazh25/CNN_NEWS/master/assets/main_page.png)
