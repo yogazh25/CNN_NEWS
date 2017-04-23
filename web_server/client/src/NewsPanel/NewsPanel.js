@@ -1,9 +1,11 @@
 import './NewsPanel.css';
-import _ from 'lodash'; // _ :特定用法
+import _ from 'lodash';
+// _ :特定用法
 
 import React from 'react';
 
-import NewsCard from '../NewsCard/NewsCard'
+import Auth from '../Auth/Auth';
+import NewsCard from '../NewsCard/NewsCard';
 
 class NewsPanel extends React.Component{
   constructor() {
@@ -20,7 +22,6 @@ class NewsPanel extends React.Component{
   //scrollY:鼠标滚过的长度；innerHeight:静止时窗口的高度
   //当两者高度之和大于文件长度：说明需要加载新的newsCards
   handleScroll() {
-
     let scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
     if ((window.innerHeight + scrollY) >= (document.body.offsetHeight - 50)) {
       console.log('Loading more news');
@@ -28,17 +29,20 @@ class NewsPanel extends React.Component{
     }
   }
 
-  loadMoreNews(e) {
+  loadMoreNews() {
     let request = new Request('http://localhost:3000/news', {
       method: 'GET',
-      cache: false
-    });
+      headers: {
+        'Authorization': 'bearer ' + Auth.getToken(),
+      },
+      cache: false});
+
+
     fetch(request)
-      .then((res)=>res.json())
-      .then((news)=>{
+      .then((res) => res.json())
+      .then((news) => {
         this.setState({
-          //如果news不为空，就接到当前newslist的下面
-          news: this.state.news?this.state.news.concat(news):news,
+          news: this.state.news? this.state.news.concat(news) : news,
         });
       });
   }

@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App/App';
-import './index.css';
+
+//入口变成了routes,根据react-router指定的路劲走
+import { browserHistory, Router } from 'react-router';
+import routes from './routes';
 
 ReactDOM.render(
-  <App />,
+  <Router history={browserHistory} routes={routes} />,
   document.getElementById('root')
 );
