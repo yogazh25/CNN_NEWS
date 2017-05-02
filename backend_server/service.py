@@ -1,14 +1,15 @@
+#Extract all the operate method to operations.py
+import operations
 import pyjsonrpc
-import json
-import os
-import sys
+#import json
+#import os
+#import sys
 
-#Mongodb us bson -->
-from bson.json_util import dumps
-# import common package in parent directory
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'common'))
-import mongodb_client
-
+#   Mongodb us bson -->
+#from bson.json_util import dumps
+#   import common package in parent directory
+#sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'common'))
+#import mongodb_client
 
 SERVER_HOST='localhost'
 SERVER_PORT = 4040
@@ -20,12 +21,15 @@ class RequestHandler(pyjsonrpc.HttpRequestHandler):
         print "Add %d and %d" % (a, b)
         return a + b
 
+    """ get news summaries for a user """
     @pyjsonrpc.rpcmethod
-    def getNews(self):
-        db = mongodb_client.get_db();
-        news = list(db['news'].find())
-        return json.loads(dumps(news))
+    def getNewsSummariesForUser(self, user_id, page_num):
+        return operations.getNewsSummariesForUser(user_id, page_num)
 
+    """ log users news click event """
+
+
+#Threading HTTP Server
 http_server = pyjsonrpc.ThreadingHttpServer(
     server_address = (SERVER_HOST, SERVER_PORT),
     RequestHandlerClass = RequestHandler

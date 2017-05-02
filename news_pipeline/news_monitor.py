@@ -25,14 +25,23 @@ NEWS_SOURCES = [
     'bbc-news',
     'bbc-sport',
     'bloomberg',
+    'business-insider',
     'cnn',
+    'daily-mail',
     'entertainment-weekly',
     'espn',
+    'financial-times',
+    'focus',
+    'fortune',
     'ign',
+    'national-geographic',
+    'new-scientist',
+    'new-york-magazine',
     'techcrunch',
     'the-new-york-times',
     'the-wall-street-journal',
-    'the-washington-post'
+    'the-washington-post',
+    'usa-today'
 ]
 
 #init to create client of redis and cloudamqp:
