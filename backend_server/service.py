@@ -27,7 +27,9 @@ class RequestHandler(pyjsonrpc.HttpRequestHandler):
         return operations.getNewsSummariesForUser(user_id, page_num)
 
     """ log users news click event """
-
+    @pyjsonrpc.rpcmethod
+    def logNewsClickForUser(self, user_id, news_id):
+        return operations.logNewsClickForUser(user_id, news_id)
 
 #Threading HTTP Server
 http_server = pyjsonrpc.ThreadingHttpServer(
